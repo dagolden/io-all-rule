@@ -2,11 +2,11 @@
 
 =head1 NAME
 
-IO::All::Rule - File finder based on Path::Iterator::Rule, but using IO::All
+IO::All::Rule - Iterative, recursive file finder with IO::All
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 

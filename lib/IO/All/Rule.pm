@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package IO::All::Rule;
-# ABSTRACT: File finder based on Path::Iterator::Rule, but using IO::All
+# ABSTRACT: Iterative, recursive file finder with IO::All
 # VERSION
 
 use parent 'Path::Iterator::Rule';
