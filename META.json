@@ -41,10 +41,8 @@
       "runtime" : {
          "requires" : {
             "IO::All" : "0",
-            "IO::Dir" : "0",
-            "Path::Iterator::Rule" : "0",
+            "Path::Iterator::Rule" : "0.002",
             "namespace::clean" : "0",
-            "parent" : "0",
             "perl" : "5.010",
             "strict" : "0",
             "warnings" : "0"
