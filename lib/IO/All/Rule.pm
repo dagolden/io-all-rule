@@ -6,10 +6,10 @@ package IO::All::Rule;
 # ABSTRACT: Iterative, recursive file finder with IO::All
 # VERSION
 
-use parent 'Path::Iterator::Rule';
+use Path::Iterator::Rule 0.002;
+our @ISA = qw/Path::Iterator::Rule/;
 
 use IO::All;
-use IO::Dir;
 use namespace::clean;
 
 sub _objectify {
@@ -20,15 +20,10 @@ sub _objectify {
 sub _children {
     my $self = shift;
     my $path = shift;
-    if ( $path->is_link ) {
-        # IO::All can't seem to give symlink-path relative children, so
-        # we construct the list by hand
-        my $dir = IO::Dir->new("$path");
-        return map { io("$path/$_") } grep { $_ ne "." && $_ ne ".." } $dir->read;
-    }
-    else {
-        return $path->all;
-    }
+    # IO::All can't seem to give symlink-path relative children, so
+    # we construct the list by hand
+    opendir( my $dir, "$path" );
+    return map { [ $_, io("$path/$_") ] } grep { $_ ne "." && $_ ne ".." } readdir $dir;
 }
 
 1;

@@ -2,7 +2,12 @@ Revision history for IO-All-Rule
 
 {{$NEXT}}
 
+    [CHANGES]
+
+    - Fixed internals for Path::Iterator::Rule 0.002 changes
+
     - Updated abstract
+
 
 0.001     2013-01-22 06:28:57 America/New_York
 
