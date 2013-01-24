@@ -2,6 +2,10 @@ Revision history for IO-All-Rule
 
 {{$NEXT}}
 
+    [DOCUMENTED]
+
+    - Added PERFORMANCE section with caveats
+
 0.002     2013-01-23 14:47:44 America/New_York
 
     [CHANGES]

@@ -56,6 +56,9 @@ L<IO::All> objects instead of bare file paths.
 
 See that module for details on features and usage.
 
+See L</PERFORMANCE> for important caveats.  You might want to use
+C<Path::Iterator::Rule> instead.
+
 =head1 EXTENDING
 
 This module may be extended in the same way as C<Path::Iterator::Rule>, but
@@ -73,6 +76,28 @@ skipped).  To disable these categories, put the following statement at the
 correct scope:
 
   no warnings 'Path::Iterator::Rule';
+
+=head1 PERFORMANCE
+
+Because all files and directories as processed as C<IO::All> objects,
+using this module is significantly slower than C<Path::Iterator::Rule>.
+
+If you are scanning tens of thousands of files and speed is a concern, you
+might be better off using that instead and only creating objects from
+results.
+
+    use IO::All;
+    use Path::Iterator::Rule;
+
+    my $rule = Path::Iterator::Rule->new->file->size(">10k");
+    my $next = $rule->iter( @dirs );
+
+    while ( my $file = io($next->()) ) {
+        ...
+    }
+
+Generally, I recommend use this module only if you need to write custom rules
+that need C<IO::All> features.
 
 =cut
 
